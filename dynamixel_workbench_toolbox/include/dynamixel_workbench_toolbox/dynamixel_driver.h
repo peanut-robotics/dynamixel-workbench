@@ -131,6 +131,8 @@ class DynamixelDriver
   bool clearMultiTurn(uint8_t id, const char **log = NULL);
 
   bool reboot(uint8_t id, const char **log = NULL);
+  void reboot(std::vector<uint8_t> id, const char **log = NULL);
+
   bool reset(uint8_t id, const char **log = NULL);
 
   bool writeRegister(uint8_t id, uint16_t address, uint16_t length, uint8_t* data, const char **log = NULL);

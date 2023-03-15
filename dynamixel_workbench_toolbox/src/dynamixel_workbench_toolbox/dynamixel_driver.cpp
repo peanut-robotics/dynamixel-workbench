@@ -446,6 +446,23 @@ bool DynamixelDriver::reboot(uint8_t id, const char **log)
   return false;
 }
 
+void DynamixelDriver::reboot(std::vector<uint8_t> id, const char **log)
+{
+  ErrorFromSDK sdk_error = {0, false, false, 0};
+
+  if (getProtocolVersion() == 1.0)
+  {
+    if (log != NULL) *log = "[DynamixelDriver] reboot functions is not available with the Dynamixel Protocol 1.0.";
+    return false;
+  }
+
+  for(unsigned int i = 0; i < id.size(); i++){
+    sdk_error.dxl_comm_result = packetHandler_->reboot(portHandler_, id[i], &sdk_error.dxl_error);
+  }
+
+  return true;
+}
+
 bool DynamixelDriver::reset(uint8_t id, const char **log)
 {
   ErrorFromSDK sdk_error = {0, false, false, 0};
