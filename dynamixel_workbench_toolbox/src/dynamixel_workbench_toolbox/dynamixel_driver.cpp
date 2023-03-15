@@ -446,7 +446,7 @@ bool DynamixelDriver::reboot(uint8_t id, const char **log)
   return false;
 }
 
-void DynamixelDriver::reboot(std::vector<uint8_t> id, const char **log)
+bool DynamixelDriver::reboot(std::vector<uint8_t> id, const char **log)
 {
   ErrorFromSDK sdk_error = {0, false, false, 0};
 
